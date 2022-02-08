@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+#divCanvas {
+  min-height: 100vh;
+  min-width: 100%;
+  background-color: rgb(17, 1, 16);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#canvas2 {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+#divBall {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  /* important new, 360 deg = 10*36 deg */
+  transform: rotate(calc(36deg * var(--i)));
+}
+
+#divBall::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background: transparent;
+  border: 4px solid aqua;
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: 0 0 20px aqua, -30px -30px 0 aqua, -30px -30px 20px aqua,
+    +30px +30px 0 aqua, +30px +30px 20px aqua, 30px -30px 0 aqua,
+    30px -30px 20px aqua, -30px 30px 0 aqua, -30px 30px 20px aqua;
+
+  animation: animate 5s linear infinite;
+  /* transform-origin: 100px; */ /*sundor aminate*/
+  animation-delay: calc(-0.25s * var(--i));
+  transform-origin: 20px;
+  transition: 2s;
+}
+
+.container:hover #divBall::before {
+  transform-origin: 250px;
+
+  box-shadow: 0 0 20px aqua, -200px -200px 0 aqua, -200px -200px 200px aqua,
+    +200px +200px 0 aqua, +200px +200px 20px aqua, 200px -200px 0 aqua,
+    200px -200px 20px aqua, -200px 200px 0 aqua, -200px 200px 20px aqua;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* 
+ */
+.footer {
+  background: transparent;
+  text-transform: uppercase;
+  color: aliceblue;
+  text-shadow: 0 0 5px black;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+.fa-facebook {
+  color: rgb(9, 114, 155);
+}
+.fa-youtube {
+  color: red;
+}
+
+.fab:hover {
+  font-size: xx-large;
+}
